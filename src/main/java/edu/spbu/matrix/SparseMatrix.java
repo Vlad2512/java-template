@@ -1,15 +1,38 @@
 package edu.spbu.matrix;
 
+
 /**
  * Разряженная матрица
  */
 public class SparseMatrix implements Matrix
 {
+
+  @Override
+  public int amountColumns() {
+    return 0;
+  }
+
+  @Override
+  public int amountRows() {
+    return 0;
+  }
+
+  @Override
+  public void changeMatrix(int x, int y)
+  {
+
+  }
+
+  @Override
+  public double getElem(int row, int col) {
+    return 0;
+  }
+
   /**
    * загружает матрицу из файла
    * @param fileName
    */
-  public SparseMatrix(String fileName) {
+  public SparseMatrix(String fileName)   {
 
   }
   /**
