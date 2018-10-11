@@ -1,5 +1,6 @@
 package edu.spbu.matrix;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DenseMatrix implements Matrix
@@ -38,39 +39,36 @@ public class DenseMatrix implements Matrix
         if(fileName.trim().length()==0)
             return;
         Scanner scan = new Scanner(new File(fileName));
-        StringBuilder sb = new StringBuilder();
-        int lenRow = 1;
-        int lenCol = 1;
-        String str = scan.nextLine();
-        sb.append(str);
-        sb.append(" ");
-        for(int i=0; i < str.length(); i++)
-        {
-            char sym = str.charAt(i);
-            if (sym == ' ') {
-                lenRow++;
-            }
-        }
+        //StringBuilder sb = new StringBuilder();
+        int lenRow = 0;
+        int lenCol = 0;
+        int i=0;
+        String str;
+        ArrayList<String[]> numbers = new ArrayList<>();
+        //sb.append(str);
+        //sb.append(" ");
         while (scan.hasNextLine())
         {
-            str = scan.nextLine();
-            sb.append(str);
-            sb.append(" ");
+          str = scan.nextLine();
+          numbers.add(str.split(" "));
+          if (i==0)
+          {
+              lenRow = numbers.size();
+          }
+          int j, index=0;
+          for(i = 0; i < lenCol; i++)
+          {
+            for(j = 0; j < lenRow; j++)
+            {
+              //matrix[i][j] = Double.parseDouble(numbers[index]);
+              index++;
+            }
+          }
+
             lenCol++;
         }
         scan.close();
         changeMatrix(lenCol, lenRow);
-        String text = new String(sb);
-        String [] numbers = text.split(" ");
-        int i, j, index=0;
-        for(i = 0; i < lenCol; i++)
-        {
-            for(j = 0; j < lenRow; j++)
-            {
-                matrix[i][j] = Double.parseDouble(numbers[index]);
-                index++;
-            }
-        }
     }
 
     /**
